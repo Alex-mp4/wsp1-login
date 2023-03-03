@@ -115,6 +115,26 @@ describe('4. Registration', () => {
             expect(response.statusCode).toBe(200);
             expect(response.text).toContain('Username is already taken');
         });
+        it('should give an error when password does not have a number', async () => {
+            expect.assertions(2);
+            const response = await request(app).post('/register').send({
+                username: user1.name,
+                password: 'asdf',
+                passwordConfirmation: 'asdf',
+            });
+            expect(response.statusCode).toBe(200);
+            expect(response.text).toContain('Username is already taken');
+        });
+        it('should give an error when password does not have a capital letter', async () => {
+            expect.assertions(2);
+            const response = await request(app).post('/register').send({
+                username: user1.name,
+                password: 'asdf',
+                passwordConfirmation: 'asdf',
+            });
+            expect(response.statusCode).toBe(200);
+            expect(response.text).toContain('Username is already taken');
+        });
         it('should register the user with correct credentials and redirect to /login', async () => {
             expect.assertions(2);
             const response = await request(app).post('/register').send({
