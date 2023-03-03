@@ -118,7 +118,7 @@ describe('4. Registration', () => {
         it('should give an error when password does not have a number', async () => {
             expect.assertions(2);
             const response = await request(app).post('/register').send({
-                username: user1.name,
+                username: 'asdf',
                 password: 'asdf',
                 passwordConfirmation: 'asdf',
             });
@@ -128,7 +128,7 @@ describe('4. Registration', () => {
         it('should give an error when password does not have a capital letter', async () => {
             expect.assertions(2);
             const response = await request(app).post('/register').send({
-                username: user1.name,
+                username: 'asdf',
                 password: 'asdf',
                 passwordConfirmation: 'asdf',
             });
